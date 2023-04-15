@@ -1,0 +1,13 @@
+<!--Angular Material Card with Title:  "Organizações em Destaque"-->
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Organizações em Destaque</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <!-- Angular Material Carousel -->
+        <mat-carousel [interval]="5000"  [hideBackArrows]="false" [hideForwardArrows]="false">
+            <mat-carousel-slide *ngFor="let slide of slides" [image]="slide.src">
+            </mat-carousel-slide>
+        </mat-carousel>
+    </mat-card-content>
+</mat-card>
