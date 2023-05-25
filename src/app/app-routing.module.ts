@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MenuPrincipalComponent } from './telas/menu-principal/menu-principal.component';
+import { MainMenuComponent } from './screens/main-menu/main-menu.component';
 
 const routes: Routes = [
-  { path: '', component: MenuPrincipalComponent},
+  { path: '', component: MainMenuComponent},
 ];
 
 @NgModule({
