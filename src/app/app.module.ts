@@ -9,7 +9,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCarouselModule } from '@ssegning-web/mat-carousel';
+import { NguCarouselModule } from '@ngu/carousel'
 import { MatCardModule } from '@angular/material/card'
 import { MatListModule } from '@angular/material/list'
 import { GoogleMapsModule } from '@angular/google-maps';
@@ -33,13 +33,13 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatCarouselModule.forRoot(),
     MatCardModule,
     MatListModule,
     MatDividerModule,
     MatExpansionModule,
     //Other Modules
-    GoogleMapsModule
+    GoogleMapsModule,
+    NguCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
-import { GOOGLE_MAPS_API_KEY } from '../api-keys';
+import { GOOGLE_MAPS_API_KEY } from 'src/api-keys';
 
 @Component({
   selector: 'app-root',

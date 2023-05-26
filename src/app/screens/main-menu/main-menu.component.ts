@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { SlideImage } from 'src/app/types/SlideImage';
+import { NguCarouselConfig } from '@ngu/carousel';
 import { Cause } from 'src/app/types/models/Cause';
-import { Organization } from 'src/app/types/models/Organization';
 
 @Component({
   selector: 'app-main-menu',
@@ -9,19 +8,13 @@ import { Organization } from 'src/app/types/models/Organization';
   styleUrls: ['./main-menu.component.sass']
 })
 export class MainMenuComponent {
-  public slides: SlideImage[] = [
-    { src: 'https://picsum.photos/1920/480?random=1', url: "/organizacoes/visualizar/1", header: 'Organização 1', subheader: 'Subheader 1' },
-    { src: 'https://picsum.photos/1920/480?random=2', url: "/organizacoes/visualizar/2", header: 'Organização 2', subheader: 'Subheader 2' },
-    { src: 'https://picsum.photos/1920/480?random=3', url: "/organizacoes/visualizar/3", header: 'Organização 3', subheader: 'Subheader 3' },
-  ]
-
-  public orgs: {name: string, position: google.maps.LatLng}[] = [
-    { name: 'Organização 1', position: new google.maps.LatLng(-23.5505199, -46.6333094) },
-    { name: 'Organização 2', position: new google.maps.LatLng(-23.5505199, -46.6333094) },
-    { name: 'Organização 3', position: new google.maps.LatLng(-23.5505199, -46.6333094) },
-    { name: 'Organização 4', position: new google.maps.LatLng(-23.5505199, -46.6333094) },
-    { name: 'Organização 5', position: new google.maps.LatLng(-23.5505199, -46.6333094) },
-    { name: 'Organização 6', position: new google.maps.LatLng(-23.5505199, -46.6333094) }, 
+  public orgs: { id: number, name: string, position: google.maps.LatLng, bannerUrl: string }[] = [
+    { id: 1, name: 'Organização 1', position: new google.maps.LatLng(-23.5505199, -46.6333094), bannerUrl: 'https://picsum.photos/1600/480?random?=1' },
+    { id: 2, name: 'Organização 2', position: new google.maps.LatLng(-23.5505199, -46.6333094), bannerUrl: 'https://picsum.photos/1600/480?random?=2' },
+    { id: 3, name: 'Organização 3', position: new google.maps.LatLng(-23.5505199, -46.6333094), bannerUrl: 'https://picsum.photos/1600/480?random?=3' },
+    { id: 4, name: 'Organização 4', position: new google.maps.LatLng(-23.5505199, -46.6333094), bannerUrl: 'https://picsum.photos/1600/480?random?=4' },
+    { id: 5, name: 'Organização 5', position: new google.maps.LatLng(-23.5505199, -46.6333094), bannerUrl: 'https://picsum.photos/1600/480?random?=5' },
+    { id: 6, name: 'Organização 6', position: new google.maps.LatLng(-23.5505199, -46.6333094), bannerUrl: 'https://picsum.photos/1600/480?random?=6' },
   ]
 
   public causes: Cause[] = [
@@ -34,4 +27,13 @@ export class MainMenuComponent {
     { id: 7, name: 'Causa 7', description: 'Descrição da causa 7', created_at: '2021-08-01T00:00:00.000Z', active: true },
     { id: 8, name: 'Causa 8', description: 'Descrição da causa 8', created_at: '2021-08-01T00:00:00.000Z', active: true }
   ]
+
+  public carouselConfig: NguCarouselConfig = {
+    grid: { xs: 1, sm: 2, md: 3, lg: 4, all: 0 },
+    slide: 1,
+    speed: 400,
+    point: {
+      visible: true,
+    }
+  }
 }
