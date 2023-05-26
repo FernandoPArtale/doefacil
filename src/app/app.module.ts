@@ -11,6 +11,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCarouselModule } from '@ssegning-web/mat-carousel';
 import { MatCardModule } from '@angular/material/card'
+import { MatListModule } from '@angular/material/list'
+import { GoogleMapsModule } from '@angular/google-maps';
+import { HttpClientModule } from '@angular/common/http';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -23,12 +28,18 @@ import { MatCardModule } from '@angular/material/card'
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    //Angular Material Modules
+    HttpClientModule,
+    //Material Modules
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatCarouselModule.forRoot(),
-    MatCardModule
+    MatCardModule,
+    MatListModule,
+    MatDividerModule,
+    MatExpansionModule,
+    //Other Modules
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
