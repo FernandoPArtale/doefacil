@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { NguCarouselConfig } from '@ngu/carousel';
 import { Cause } from 'src/app/types/models/Cause';
 
@@ -37,9 +38,27 @@ export class MainMenuComponent {
 
   public carouselConfig: NguCarouselConfig = {
     grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
-    interval: {timing: 40000, initialDelay: 1000},
+    interval: { timing: 40000, initialDelay: 1000 },
     loop: true,
     touch: true,
     velocity: 0.2
+  }
+
+
+  constructor(public router: Router) {
+
+  }
+
+  clickPosition : HammerPoint = { x: 0, y: 0 };
+
+  onMouseDown(ev: MouseEvent) {
+    this.clickPosition = { x: ev.clientX, y: ev.clientY };
+  }
+
+  public nagivateBanner(ev: MouseEvent, id: number) {
+    if (this.clickPosition.x !== ev.clientX && this.clickPosition.y !== ev.clientY) {
+      return;
+    }
+    this.router.navigate(['/organizacao/visualizar', id]);
   }
 }

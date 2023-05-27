@@ -1,9 +1,9 @@
 <mat-toolbar color="primary">
     <a mat-button routerLink="/">Doe Fácil</a>
-    <a mat-button routerLink="/organizacoes">Organizações</a>
-    <a mat-button routerLink="/causas">Causas</a>
-    <a mat-button routerLink="/sobre">Sobre nós</a>
+    <a mat-button routerLink="/organizacao">Organizações</a>
+    <a mat-button routerLink="/causa">Causas</a>
+    <a mat-button routerLink="/sobre-nos">Sobre nós</a>
     <span class="flex-spacer"></span>
     <a mat-button routerLink="/login" *ngIf="!userService.isLoggedIn">Login</a>
-    <a mat-button routerLink="/sair" *ngIf="userService.isLoggedIn">Sair</a>
+    <a mat-button (click)="sair()" *ngIf="userService.isLoggedIn">Sair</a>
 </mat-toolbar>

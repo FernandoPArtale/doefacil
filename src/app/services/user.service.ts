@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,18 @@ export class UserService {
 
   public isLoggedIn: boolean = false;
 
-  constructor() { }
+  
+  constructor(private router: Router) { }
+
+
+  public login(username: string, password: string) {
+    this.router.navigate(['/']);
+  }
+
+  public logout() {
+    this.token = undefined;
+    this.router.navigate(['/']);
+  }
+
 
 }

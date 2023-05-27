@@ -24,6 +24,14 @@ import { OrganizationsListComponent } from './screens/org/organizations-list/org
 import { ViewOrganizationComponent } from './screens/org/view-organization/view-organization.component';
 import { CausesListComponent } from './screens/cause/causes-list/causes-list.component';
 import { ViewCauseComponent } from './screens/cause/view-cause/view-cause.component';
+import { RegisterComponent } from './screens/register/register.component';
+import { PasswordRecoveryComponent } from './screens/password-recovery/password-recovery.component';
+import { AboutUsComponent } from './screens/about-us/about-us.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatChipsModule } from '@angular/material/chips';
+import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-mask';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -34,7 +42,10 @@ import { ViewCauseComponent } from './screens/cause/view-cause/view-cause.compon
     OrganizationsListComponent,
     ViewOrganizationComponent,
     CausesListComponent,
-    ViewCauseComponent
+    ViewCauseComponent,
+    RegisterComponent,
+    PasswordRecoveryComponent,
+    AboutUsComponent
   ],
   imports: [
     //Angular Modules
@@ -53,11 +64,20 @@ import { ViewCauseComponent } from './screens/cause/view-cause/view-cause.compon
     MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
+    MatGridListModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     //Other Modules
     GoogleMapsModule,
-    NguCarouselModule
+    NguCarouselModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
-  providers: [],
+  providers: [
+    provideEnvironmentNgxMask(),
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

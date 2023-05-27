@@ -5,13 +5,13 @@
         </mat-card-header>
         <ngu-carousel [inputs]="carouselConfig" [dataSource]="orgs">
             <div class="item flex justify-center" *nguCarouselDef="let org;" [title]="org.name">
-                <img [src]="org.bannerUrl" alt="Imagem da organização" class="imgBanner px-4">
+                <img (mousedown)="onMouseDown($event)" (mouseup)="nagivateBanner($event, org.id)" [src]="org.bannerUrl" alt="Imagem da organização" class="imgBanner px-4 cursor-pointer">
             </div>
             <button NguCarouselNext class="rightRs"><mat-icon>arrow_forward_ios</mat-icon></button>
             <button NguCarouselPrev class="leftRs"><mat-icon>arrow_back_ios</mat-icon></button>
         </ngu-carousel>
         <mat-card-actions>
-            <button mat-button class="ms-auto" [routerLink]="'/organizacoes'">
+            <button mat-button class="ms-auto" [routerLink]="'/organizacao'">
                 Ver todas <mat-icon>arrow_forward</mat-icon>
             </button>
         </mat-card-actions>
@@ -33,7 +33,7 @@
                             </mat-expansion-panel-header>
                             <span>{{cause.description}}</span>
                             <mat-action-row>
-                                <button mat-button class="ms-auto" [routerLink]="'/causas/' + cause.id">
+                                <button mat-button class="ms-auto" [routerLink]="['/causa/visualizar', cause.id]">
                                     Mais Informações <mat-icon>info</mat-icon>
                                 </button>
                             </mat-action-row>
@@ -42,7 +42,7 @@
                 </div>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-button class="ms-auto" [routerLink]="'/causas'">
+                <button mat-button class="ms-auto" [routerLink]="'/causa'">
                     Ver mais causas <mat-icon>arrow_forward</mat-icon>
                 </button>
             </mat-card-actions>

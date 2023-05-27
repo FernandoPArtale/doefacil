@@ -1,1 +1,36 @@
-<p>organizations-list works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Organizações</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="grid gap-4" [class.grid-cols-1]="cols === 1" [class.grid-cols-2]="cols === 2" [class.grid-cols-3]="cols === 3" [class.grid-cols-4]="cols === 4">
+            <mat-card *ngFor="let org of orgs">
+                <mat-card-header [style.min-width.px]="cardWidth">
+                    <div mat-card-avatar>
+                        <img class="logo-sm" [src]="'https://picsum.photos/240/240?random?'+org.id" />
+                    </div>
+                    <mat-card-title>{{org.trading_name}}</mat-card-title>
+                    <mat-card-subtitle>{{org.business_name}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>{{org.description}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-icon-button title="Mais Informações" [routerLink]="['/organizacao/visualizar', org.id]">
+                        <mat-icon>info</mat-icon>
+                    </button>
+                    <div class="me-auto flex flex-row gap-1">
+                        <mat-chip *ngFor="let c of org.causes ?? []" color="secondary">
+                            {{c.name}}
+                        </mat-chip>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </mat-card-content>
+    <mat-card-actions class="justify-center">
+        <button mat-raised-button color="primary" (click)="carregarOrganizacoes()">
+            <mat-icon>refresh</mat-icon>Carregar Mais
+        </button>
+    </mat-card-actions>
+</mat-card>

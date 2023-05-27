@@ -1,1 +1,84 @@
-<p>view-organization works!</p>
+<div class="flex flex-col space-y-4">
+    <div class="basis-1/5 flex flex-row">
+        <button mat-button routerLink="/organizacao">
+            <mat-icon>arrow_backward</mat-icon>Mais Organizações
+        </button>
+    </div>
+    <mat-card class="basis-2/5">
+        <img mat-card-image [src]="'https://picsum.photos/3280/480?random?'+org.id">
+        <mat-card-header>
+            <mat-card-title>{{org.trading_name}}</mat-card-title>
+            <mat-card-subtitle>{{org.business_name}} - ({{org.document}})</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{org.description}}</p>
+            <p class="font-bold">Causas:</p>
+            <div class="flex flex-row space-x-2">
+                <mat-chip *ngFor="let c of org.causes ?? []" color="secondary">
+                    {{c.name}}
+                </mat-chip>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <div class="flex flex-row basis-2/5 space-x-4">
+        <mat-card class="basis-1/2">
+            <mat-card-header>
+                <mat-card-title>Endereços</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="flex flex-col space-x-2">
+                <google-map class="" width="100%">
+                    <map-marker *ngFor="let address of org.addresses ?? []" [position]="address.coordinate" [label]="address.name"></map-marker>
+                </google-map>
+                <div class="">
+                    <mat-card *ngFor="let address of org.addresses ?? []">
+                        <mat-card-header>
+                            <mat-card-title>{{address.name}}</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <div class="flex flex-row space-x-1">
+                                <mat-icon>location_on</mat-icon>
+                                <p class="ms-auto">{{address.street_address}}, {{address.address_number}} - {{address.neighborhood}}</p>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <div class="flex flex-row space-x-1">
+                                <mat-icon>location_city</mat-icon>
+                                <p class="ms-auto">{{address.city}} - {{address.state_acronym}}</p>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <div class="flex flex-row space-x-1">
+                                <mat-icon>mail</mat-icon>
+                                <p class="ms-auto">{{address.postal_code}}</p>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="basis-1/2">
+            <mat-card-header>
+                <mat-card-title>Contatos</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="flex flex-col">
+                    <mat-card *ngFor="let contact of org.contacts ?? []">
+                        <mat-card-header>
+                            <mat-card-title>{{contact.name}}</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <div class="flex flex-row space-x-1">
+                                <mat-icon>phone</mat-icon>
+                                <p class="ms-auto">{{contact.phone}}</p>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <div class="flex flex-row space-x-1">
+                                <mat-icon>mail</mat-icon>
+                                <p class="ms-auto">{{contact.email}}</p>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+

@@ -10,4 +10,8 @@ export class NavBarComponent {
   constructor(
     public userService: UserService
   ) {}
+
+  sair() {
+    this.userService.logout();
+  }
 }

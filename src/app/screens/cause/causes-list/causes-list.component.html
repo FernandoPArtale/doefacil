@@ -1,1 +1,30 @@
-<p>causes-list works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Causas</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let cause of causes">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{cause.name}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        {{cause.description}}
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>Organizações Ajudantes da Causa: {{cause.helper_organization_count ?? 0}}</p>
+                <mat-action-row>
+                    <button mat-button [routerLink]="['/causa/visualizar', cause.id]">
+                        <mat-icon>info</mat-icon>Mais Informações
+                    </button>
+                </mat-action-row>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-card-content>
+    <mat-card-actions class="justify-center">
+        <button mat-raised-button color="primary" (click)="carregarCausas()">
+            <mat-icon>refresh</mat-icon>Carregar Mais
+        </button>
+    </mat-card-actions>
+</mat-card>
