@@ -16,12 +16,25 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { LoginComponent } from './screens/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { OrganizationsListComponent } from './screens/org/organizations-list/organizations-list.component';
+import { ViewOrganizationComponent } from './screens/org/view-organization/view-organization.component';
+import { CausesListComponent } from './screens/cause/causes-list/causes-list.component';
+import { ViewCauseComponent } from './screens/cause/view-cause/view-cause.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainMenuComponent,
-    NavBarComponent
+    NavBarComponent,
+    LoginComponent,
+    OrganizationsListComponent,
+    ViewOrganizationComponent,
+    CausesListComponent,
+    ViewCauseComponent
   ],
   imports: [
     //Angular Modules
@@ -29,6 +42,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     //Material Modules
     MatToolbarModule,
     MatIconModule,
@@ -37,6 +51,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatListModule,
     MatDividerModule,
     MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule,
     //Other Modules
     GoogleMapsModule,
     NguCarouselModule

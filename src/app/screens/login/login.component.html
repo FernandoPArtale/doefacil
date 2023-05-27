@@ -1,0 +1,28 @@
+<div class="flex justify-center align-center">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <mat-form-field class="w-full">
+                    <mat-label>Usuário</mat-label>
+                    <input matInput type="text" formControlName="username" required>
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                    <mat-label>Senha</mat-label>
+                    <input matInput type="password" formControlName="password" required>
+                </mat-form-field>
+                <div class="flex flex-col justify-center">
+                    <button mat-raised-button color="primary" class="w-4/5 mx-auto" type="submit">Entrar</button>
+                    <button mat-raised-button color="secondary" class="w-4/5 mx-auto mt-4" [routerLink]="'/cadastro'">Não possui uma conta? Cadastre-se</button>
+                </div>
+            </form>
+        </mat-card-content>
+        <mat-action-list>
+            <div class="flex justify-center">
+                <button mat-button [routerLink]="'/esqueceu-senha'">Esqueceu a senha?</button>
+            </div>
+        </mat-action-list>
+    </mat-card>
+</div>

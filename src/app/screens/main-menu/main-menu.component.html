@@ -3,10 +3,12 @@
         <mat-card-header>
             <mat-card-title>Organizações em Destaque</mat-card-title>
         </mat-card-header>
-        <ngu-carousel [inputs]="carouselConfig" [dataSource]="[1,2,3,4,5,6]">
-            <ngu-tile *ngFor="let org of orgs" [title]="org.name" [routerLink]="'/organizacoes/' + org.id">
-                <img [src]="org.bannerUrl" alt="Imagem da organização" class="w-full h-48 object-cover">
-            </ngu-tile>
+        <ngu-carousel [inputs]="carouselConfig" [dataSource]="orgs">
+            <div class="item flex justify-center" *nguCarouselDef="let org;" [title]="org.name">
+                <img [src]="org.bannerUrl" alt="Imagem da organização" class="imgBanner px-4">
+            </div>
+            <button NguCarouselNext class="rightRs"><mat-icon>arrow_forward_ios</mat-icon></button>
+            <button NguCarouselPrev class="leftRs"><mat-icon>arrow_back_ios</mat-icon></button>
         </ngu-carousel>
         <mat-card-actions>
             <button mat-button class="ms-auto" [routerLink]="'/organizacoes'">
@@ -21,25 +23,27 @@
                 <mat-card-title>Causas mais atendidas</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                <mat-accordion>
-                    <mat-expansion-panel *ngFor="let cause of causes">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                {{cause.name}}
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <span>{{cause.description}}</span>
-                        <mat-action-row>
-                            <button mat-button class="ms-auto" [routerLink]="'/causas/' + cause.id">
-                                Mais Informações <mat-icon>info</mat-icon>
-                            </button>
-                        </mat-action-row>
-                    </mat-expansion-panel>
-                </mat-accordion>
+                <div class="max-h-96 overflow-y-auto">
+                    <mat-accordion>
+                        <mat-expansion-panel *ngFor="let cause of causes">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{cause.name}}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <span>{{cause.description}}</span>
+                            <mat-action-row>
+                                <button mat-button class="ms-auto" [routerLink]="'/causas/' + cause.id">
+                                    Mais Informações <mat-icon>info</mat-icon>
+                                </button>
+                            </mat-action-row>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
             </mat-card-content>
             <mat-card-actions>
                 <button mat-button class="ms-auto" [routerLink]="'/causas'">
-                    Ver todas <mat-icon>arrow_forward</mat-icon>
+                    Ver mais causas <mat-icon>arrow_forward</mat-icon>
                 </button>
             </mat-card-actions>
         </mat-card>
@@ -48,7 +52,7 @@
                 <mat-card-title>Organizações Próximas</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                <google-map [width]="'100%'">
+                <google-map  [width]="'100%'" height="384px">
                     <map-marker *ngFor="let org of orgs" [position]="org.position" [label]="org.name"
                         [title]="org.name"></map-marker>
                 </google-map>
